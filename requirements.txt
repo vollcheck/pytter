@@ -1,0 +1,4 @@
+gitterpy==0.1.7
+npyscreen==4.10.5
+
+# black
