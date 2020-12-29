@@ -1,10 +1,6 @@
 import npyscreen as n
 
-
-class MessageBox(n.BoxTitle):
-    def create(self, **kwargs):
-        client = None  # TODO: Get the messages from Gitter API.
-        self.buff = len(client.dialogs) * [None]
+from message_box import MessageBox
 
 
 class MainForm(n.FormBaseNew):
@@ -33,12 +29,16 @@ class MainForm(n.FormBaseNew):
             rely=-7
         )
 
+        # Initial data.
+        self.message_box.display_messages()
+        # self.chat_box.display_chat()  # TODO.
 
-class App(n.NPSAppManaged):  # telegram tui has inherits the StandardApp
+
+class Pytter(n.NPSAppManaged):  # Telegram TUI inherits the StandardApp.
     def onStart(self):
         self.addForm("MAIN", MainForm)
 
 
-if __name__ == '__main__':
-    application = App()
-    application.run()
+if __name__ == "__main__":
+    pytter = Pytter()
+    pytter.run()
